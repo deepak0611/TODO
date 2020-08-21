@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+
+      .demoul{
+        width: 100%;
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        margin-top: 10px;
+      }
+      .demoul li{
+        position: relative;
+        padding: 12px 8px 12px 40px;
+        /*font-size: 20px;*/
+        background-color:hsla(183, 32%, 70%, 0.7);
+        word-break: break-all;
+        cursor: pointer;
+
+
+        /* make the list items unselectable */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;      
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        border-radius: 5px;
+        border-bottom-style: solid;
+        border-bottom-color: hsl(147, 50%, 47%);
+        margin-bottom: 3px;
+        font-family: 'Abel';
+      }
+     
+      /*.demoul li:hover{
+       color: white;
+       background-color: MediumSeaGreen;
+       border-left-style: solid;
+       border-left-color: hsl(147, 50%, 47%);
+       border-right-style: solid;
+       border-right-color: hsl(147, 50%, 47%);
+       border-top-style: solid;
+       border-top-color: hsl(147, 50%, 47%);
+       margin-top: 5px;
+       margin-bottom: 5px;
+      }*/
+      .demoul li span{
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        height: 100%;
+        /*width: 5%;*/
+        padding: 3px 16px 21px 16px;
+      }
+      .demoul li span:hover{
+        color: red;
+        cursor: pointer;
+      }
+      .checked{
+        text-decoration: line-through;
+      }
+      .checked::before{
+        content: "\2713";
+        color: blue;
+        font-size: 20px;
+        font-weight: bold;
+        display: inline-block;
+        clear: both;
+        position: absolute;
+        left: 10px;
+        top: 20%;
+      }
+     
+     .btn{
+      background-color: red;
+      color:white;
+      width: 100%;
+      padding: 10px;
+      margin: 0px;
+      font-size: 20px;
+      border:none;
+     }
+     .btn:hover{
+      color: white;
+     }
+     #inp{
+      width: 100%;
+      margin: 0px;
+      border:none;
+      height: 100%;  
+      padding-left: 10px;
+     }
+     #inp:focus{
+      border:none;
+      outline: none;
+     }
+     .grid-container{
+      width: 95%;
+      height: 40px;
+      margin-bottom: 5px;
+      /*margin-top: 20px;*/
+      margin-right: auto;
+      margin-left: auto;
+      display: grid;
+      grid-template-columns: 10% 80% 10%;
+      border-radius: 8px;
+      box-shadow: 1px 1px 5px black;
+     }
+     .grid-item{
+      border-width: 1px;
+      text-align: center;     
+     }
+     #sidebar{
+      max-width: 900px;
+      height: 70px;      
+      position: sticky;
+      bottom: 0px;
+      left: 20.6%;
+      padding: 10px;
+      border-radius: 8px;
+      z-index: 2;
+      background-color: white;
+      display: none;
+     }
+     .heading{
+      width: 95%;background-color: black;color: white;font-size: 18px;
+     }
+     #alerter{
+      color: red;
+      margin-left: 2.5%;
+     }
+
+     @media screen and (max-width: 660px){
+      .heading{width: 100%;}
+     }
+     @media screen and (min-width: 1000px){
+      .demoul li:hover{
+       color: white;
+       background-color: MediumSeaGreen;
+      }
+      .btn:hover{
+      color: white;
+      background-color: dodgerblue;
+     }
+
+     }
+
+    </style>
+
+
+    <title>Todo</title>
+    
+     
+    
+  </head>
+  <body onload="extracter()">
+    <center>
+    <div style="max-width: 900px;margin-right: auto;margin-left:auto;margin-bottom: 0px; background-color: white;padding: 5px;z-index: 2;">
+      <div class="heading">
+        <span>T</span>
+        <span>O</span>
+        <span>D</span>
+        <span>O</span>
+        &nbsp;
+        <span>L</span>
+        <span>I</span>
+        <span>S</span>
+        <span>T</span>
+      </div>      
+    </div>  
+    </center>
+
+   <div style="max-width: 900px;margin-right: auto;margin-left: auto;position: sticky;top:0px;z-index: 2;padding-top: 25px;padding-bottom: 20px; background-color: white;">
+
+    <div class="grid-container">
+      <div class="grid-item" style="padding-top: 7px;cursor: pointer;" onclick="opener()">
+        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+      </div>
+      <div class="grid-item" >
+        <input type="text" name="" placeholder="add new task..." id="inp" autocomplete="off" onkeyup="submitby()">
+      </div>
+      <div class="grid-item" style="padding-top: 4px;cursor: pointer;" onclick="addfunc()" id="subbtn">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check2-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+          <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+          <path fill-rule="evenodd" d="M8 2.5A5.5 5.5 0 1 0 13.5 8a.5.5 0 0 1 1 0 6.5 6.5 0 1 1-3.25-5.63.5.5 0 1 1-.5.865A5.472 5.472 0 0 0 8 2.5z"/>
+        </svg>
+      </div>
+    </div>
+    <p id="alerter"></p>
+  </div>
+
+  <div style="max-width: 900px;margin-right: auto;margin-left: auto;background-color: white;">
+     <ul class="demoul" id="ull">       
+    </ul>
+    <p id="help" style="margin-left: 2.5%;"></p>
+  </div>  
+
+   <div id="sidebar">
+     <button class="btn" onclick="cleanall()">Clear all</button>      
+   </div>
+
+
+
+  <script type="text/javascript">
+    if(!localStorage.total){
+      localStorage.setItem("total",0);
+    }    
+    var pk=Number(localStorage.getItem("total"));
+   
+    function addfunc(){      
+
+      document.getElementById("help").innerHTML="";
+      var ipvalue,li,span,att;
+      ipvalue=document.getElementById("inp").value;
+
+      if(ipvalue==""){
+        document.getElementById("alerter").innerHTML="you have written nothing!";
+        return;
+      }
+      document.getElementById("alerter").innerHTML="";
+
+      li=document.createElement("LI");
+      li.innerHTML=ipvalue;
+      span=document.createElement("SPAN");
+      att = document.createAttribute("class");       
+      att.value = "fa fa-close";                         
+      span.setAttributeNode(att);
+      // span.style.fontSize="24px";
+      span.setAttribute("id",String(pk));
+
+      span.addEventListener("click", deletefunc);
+      li.appendChild(span);
+      li.addEventListener("click", underlinerfunc);
+      document.getElementById("ull").appendChild(li);   
+      document.getElementById("inp").value="";
+
+      localStorage.setItem(String(pk),ipvalue);
+      pk++;
+      localStorage.setItem("total",String(pk));
+    }
+
+    function deletefunc(){      
+      var temp=this.getAttribute("id");
+      localStorage.removeItem(temp);
+      this.parentElement.remove();           
+    }
+
+    function underlinerfunc(){
+      if(this.hasAttribute("class")){
+        this.removeAttribute("class");
+      }
+      else{
+        var att = document.createAttribute("class");       
+        att.value = "checked";                           
+        this.setAttributeNode(att);     
+      }  
+      
+    }
+
+    function submitby(){
+      if(event.keyCode == 13){
+        var but=document.getElementById("subbtn");
+        but.click();
+      }
+    }
+
+    function extracter(){
+      if(pk!=0){
+        var j=0;
+        for(j=0;j<pk;j++){
+        var ipvalue,li,span,att;
+        ipvalue=localStorage.getItem(String(j));
+
+        if(ipvalue==null){continue;}
+
+        li=document.createElement("LI");
+        li.innerHTML=ipvalue;
+        span=document.createElement("SPAN");
+        att = document.createAttribute("class");       
+        att.value = "fa fa-close";                         
+        span.setAttributeNode(att);
+        // span.style.fontSize="24px";
+
+        span.addEventListener("click", deletefunc);
+        span.setAttribute("id",String(j));
+
+        li.appendChild(span);
+        li.addEventListener("click", underlinerfunc);
+
+        document.getElementById("ull").appendChild(li);   
+        document.getElementById("inp").value="";
+
+        }
+      }
+      else{
+        document.getElementById("help").innerHTML=
+        "Guide:<br><br>"+
+        "Todo-list a time management implementation.<br> To add a todo in the list type in the input box at the top.<br>Click on the task to mark it complete.<br>"+
+        "To delete a task click on 'x' button at right corner.<br>To delete the whole list click on the leftmost top corner and then click on clear all.";
+      }
+
+    }
+
+    function cleanall(){
+      localStorage.clear();
+      location.reload();
+    }
+    
+    function opener(){
+      var z=document.getElementById("sidebar");
+      if(z.style.display=="block"){
+        z.style.display="none";
+      }
+      else{
+        z.style.display="block"
+      }
+    }
+
+  </script>
+   
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+  </body>
