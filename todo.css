@@ -1,0 +1,149 @@
+* {
+        box-sizing: border-box;
+      }
+
+      .demoul{
+        width: 100%;
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        margin-top: 10px;
+      }
+      .demoul li{
+        position: relative;
+        padding: 12px 8px 12px 40px;
+        /*font-size: 20px;*/
+        background-color:hsla(183, 32%, 70%, 0.7);
+        word-break: break-all;
+        cursor: pointer;
+
+
+        /* make the list items unselectable */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;      
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        border-radius: 5px;
+        border-bottom-style: solid;
+        border-bottom-color: hsl(147, 50%, 47%);
+        margin-bottom: 3px;
+        font-family: 'Abel';
+      }
+     
+      /*.demoul li:hover{
+       color: white;
+       background-color: MediumSeaGreen;
+       border-left-style: solid;
+       border-left-color: hsl(147, 50%, 47%);
+       border-right-style: solid;
+       border-right-color: hsl(147, 50%, 47%);
+       border-top-style: solid;
+       border-top-color: hsl(147, 50%, 47%);
+       margin-top: 5px;
+       margin-bottom: 5px;
+      }*/
+      .demoul li span{
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        height: 100%;
+        /*width: 5%;*/
+        padding: 3px 16px 21px 16px;
+      }
+      .demoul li span:hover{
+        color: red;
+        cursor: pointer;
+      }
+      .checked{
+        text-decoration: line-through;
+      }
+      .checked::before{
+        content: "\2713";
+        color: blue;
+        font-size: 20px;
+        font-weight: bold;
+        display: inline-block;
+        clear: both;
+        position: absolute;
+        left: 10px;
+        top: 20%;
+      }
+     
+     .btn{
+      background-color: red;
+      color:white;
+      width: 100%;
+      padding: 10px;
+      margin: 0px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      border:none;
+     }
+     .btn:hover{
+      color: white;
+     }
+     #inp{
+      width: 100%;
+      margin: 0px;
+      border:none;
+      height: 100%;  
+      padding-left: 10px;
+     }
+     #inp:focus{
+      border:none;
+      outline: none;
+     }
+     .grid-container{
+      width: 95%;
+      height: 40px;
+      margin-bottom: 5px;
+      /*margin-top: 20px;*/
+      margin-right: auto;
+      margin-left: auto;
+      display: grid;
+      grid-template-columns: 10% 80% 10%;
+      border-radius: 8px;
+      box-shadow: 1px 1px 5px black;
+     }
+     .grid-item{
+      border-width: 1px;
+      text-align: center;     
+     }
+     #sidebar{
+      max-width: 900px;
+      height: 140px;      
+      position: sticky;
+      bottom: 0px;
+      /*bottom: 60px;*/
+      left: 20.6%;
+      padding: 10px;
+      /*padding-bottom: 20px;*/
+      border-radius: 8px;
+      z-index: 2;
+      background-color: white;
+      display: none;
+     }
+     .heading{
+      width: 95%;background-color: black;color: white;font-size: 18px;
+     }
+     #alerter{
+      color: red;
+      margin-left: 2.5%;
+     }
+
+     @media screen and (max-width: 660px){
+      .heading{width: 100%;}
+     }
+     @media screen and (min-width: 1000px){
+      .demoul li:hover{
+       color: white;
+       background-color: MediumSeaGreen;
+      }
+     /* .btn:hover{
+      color: white;
+      background-color: dodgerblue;
+     }*/
+
+     }
